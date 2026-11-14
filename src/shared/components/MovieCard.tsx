@@ -1,6 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Image as ExpoImage } from "expo-image";
-import { useState } from "react";
 import { Pressable, Text, View, StyleSheet } from "react-native";
 
 type Props = {
@@ -8,6 +7,7 @@ type Props = {
   overview?: string;
   rating?: number;
   posterUri?: string;
+  /** Controlled saved state — when provided the component is fully controlled */
   isSaved?: boolean;
   onSavePress?: () => void;
 };
@@ -17,13 +17,10 @@ export default function MovieCard({
   overview = "No overview available.",
   rating = 0,
   posterUri,
-  isSaved: initialSaved = false,
+  isSaved = false,
   onSavePress,
 }: Props) {
-  const [isSaved, setIsSaved] = useState(initialSaved);
-
   function handleSavePress() {
-    setIsSaved((prev) => !prev);
     onSavePress?.();
   }
   return (

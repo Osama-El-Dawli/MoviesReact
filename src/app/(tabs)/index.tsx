@@ -1,4 +1,5 @@
 import { useMovies } from "@/features/home/presentation/hooks/use-movies";
+import { useSavedMovies } from "@/features/saved-movies/hooks/use-saved-movies";
 import AppHeader from "@/shared/components/AppHeader";
 import MovieCard from "@/shared/components/MovieCard";
 import { getMoviePosterUrl } from "@/shared/utils/movie-image";
@@ -19,6 +20,8 @@ export default function HomeScreen() {
     isRefetching,
     refetch,
   } = useMovies();
+
+  const { isSaved, toggleSave } = useSavedMovies();
 
   return (
     <View style={styles.container}>
@@ -48,6 +51,9 @@ export default function HomeScreen() {
               title={item.title}
               posterUri={getMoviePosterUrl(item.poster_path)}
               overview={item.overview}
+              rating={item.vote_average}
+              isSaved={isSaved(item.id.toString())}
+              onSavePress={() => toggleSave(item)}
             />
           )}
         />

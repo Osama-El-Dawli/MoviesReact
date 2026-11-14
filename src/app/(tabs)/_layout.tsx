@@ -9,6 +9,7 @@ export default function TabsLayout() {
     >
       <NativeTabs.Trigger
         name="index"
+        indicatorColor={"transparent"}
         contentStyle={{ backgroundColor: "#FFFFFF" }}
       >
         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
@@ -17,6 +18,7 @@ export default function TabsLayout() {
       <NativeTabs.Trigger
         name="saved"
         contentStyle={{ backgroundColor: "#FFFFFF" }}
+        indicatorColor={"transparent"}
       >
         <NativeTabs.Trigger.Icon sf="bookmark.fill" md="bookmark" />
         <NativeTabs.Trigger.Label>Saved</NativeTabs.Trigger.Label>
